@@ -4,6 +4,8 @@
  
  cd ruby/
  
+ sudo mkdir -p tmp/pids tmp/sockets public/plugin_assets
+ 
  cp /config/database.yml.example /config/database.yml
  
  => change this
@@ -22,9 +24,10 @@
   
   encoding: utf8mb4
   
-  ## Migrate DB
-  docker compose exec app env RAILS_ENV=production rake db:migrate
   
-  => docker compose up -d 
+  => docker compose build && docker compose up -d
+  
+   ## Migrate DB
+  docker compose exec app env RAILS_ENV=production rake db:migrate
 
 
